@@ -11,29 +11,24 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AppComponent implements OnInit {
   title = 'http-put';
-
   registerform: any;
-  username: any;
   list_of_data: any = [];
   firstnamedispaly: any;
-  lastnamedisplay: any
+  lastnamedisplay: any;
+  jsondata: any = [];
+  constructor(private api: ContactService, private toastr: ToastrService) { }
 
-
-  constructor(private api: ContactService, private toastr: ToastrService) {
-
-  }
-  ngOnInit() {
+  ngOnInit(): void {
 
     this.registerform = new FormGroup({
-      'firstname': new FormControl('', [Validators.required]),
-      'lastname': new FormControl('', [Validators.required]),
+      'firstname': new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z ]*$")]),
+      'lastname': new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z ]*$")]),
       'username': new FormControl('', [Validators.required, Validators.email, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]),
       'password': new FormControl('', [Validators.required, Validators.pattern('(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=[^0-9]*[0-9]).{8,}')]),
       'confirmpassword': new FormControl('', [Validators.required, Validators.pattern('(?=[^A-Z]*[A-Z])(?=[^a-z]*[a-z])(?=[^0-9]*[0-9]).{8,}')]),
-      'gender': new FormControl('', [Validators.required]),
+      'gender': new FormControl('', [Validators.required, Validators.pattern("^[a-zA-Z ]*$")]),
     });
     this.getMethod();
-    ;
   }
 
   get Firstname() {
@@ -89,7 +84,9 @@ export class AppComponent implements OnInit {
   getMethod() {
     this.api.readData().subscribe((response: any) => {
       console.log(response);
+      this.jsondata.push(response)
     })
+
   }
   showSuccess() {
     this.toastr.success('Register successfull');

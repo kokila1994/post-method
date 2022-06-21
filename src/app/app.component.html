@@ -1,23 +1,23 @@
 <div class="row">
     <div class="col-12 header">
-        <h5>Problem Statement-4</h5>
+        <h5>Api Methods & Npm Installation</h5>
     </div>
 </div>
 <div class="row">
-    <div class="coi-12 names">
+    <div class="clo-12 nmaes">
         <h6><u>{{firstnamedispaly}}&nbsp;&nbsp;{{lastnamedisplay}}</u></h6>
     </div>
 </div>
 <div class="row">
-    <div class="col-3 loginform">
+    <div class="col-3 body">
         <form [formGroup]="registerform">
             <div>
-                <input type="text" placeholder="enter your name" formControlName="firstname">
+                <input type="text" placeholder="enter your First Name" formControlName="firstname">
                 <p *ngIf="Firstname.invalid && Firstname.touched">Please Enter Your First Name</p>
             </div>
 
             <div>
-                <input type="text" placeholder="enter your name" formControlName="lastname">
+                <input type="text" placeholder="enter your Last Name" formControlName="lastname">
                 <p *ngIf="Lastname.invalid && Lastname.touched"> Please Enter Your Last Name</p>
             </div>
             <div>
@@ -44,26 +44,45 @@
             </div>
         </form>
     </div>
-    <div class="col-7">
-        <table>
-            <tr>
-                <th>SL NO</th>
-                <th>First Name</th>
-                <th>Lasst Name</th>
-                <th>User Name</th>
-                <th>Password</th>
-                <th>Confirm Password</th>
-                <th>Gender</th>
-            </tr>
-            <tr *ngFor="let item of list_of_data;let i = index">
-                <td>{{i+1}}</td>
-                <td>{{item.firstname}}</td>
-                <td>{{item.lastname}}</td>
-                <td>{{item.username}}</td>
-                <td>{{item.password}}</td>
-                <td>{{item.confirmpassword}}</td>
-                <td>{{item.gender}}</td>
-            </tr>
-        </table>
+    <div class="col-7 database">
+        <div>
+            <table>
+                <tr>
+                    <th>SL NO</th>
+                    <th>First Name</th>
+                    <th>Lasst Name</th>
+                    <th>User Name</th>
+                    <th>Password</th>
+                    <th>Confirm Password</th>
+                    <th>Gender</th>
+                </tr>
+                <tr *ngFor="let item of list_of_data;let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{item.firstname}}</td>
+                    <td>{{item.lastname}}</td>
+                    <td>{{item.username}}</td>
+                    <td>{{item.password}}</td>
+                    <td>{{item.confirmpassword}}</td>
+                    <td>{{item.gender}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="jsondeatils">
+            <div class="josondata">
+                <h6>Json Get Method Data</h6>
+            </div>
+            <div class="jsontable">
+                <table>
+                    <tr>
+                        <th>SL No</th>
+                        <th>Data</th>
+                    </tr>
+                    <tr *ngFor="let item of jsondata ; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{item}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
